@@ -19,19 +19,21 @@ public class PlayerMovement : SingletonBase<PlayerMovement>
         SingletonAwake();
     }
 
-    void GravityActing()
+    /*void GravityActing()
     {
         playerPosition.y -= Gravity.instance.gravity * Time.deltaTime;
-    }
+    }*/
 
     public void MoveLeft() 
     {
-        playerPosition.x -= playerVelocity * Time.deltaTime;
+        if (playerPosition.x > AreaConstraints.instance.LeftStageLimit)
+            playerPosition.x -= playerVelocity * Time.deltaTime;
     }
 
     public void MoveRight() 
     {
-        playerPosition.x += playerVelocity * Time.deltaTime;
+        if (playerPosition.x < AreaConstraints.instance.RightStageLimit)
+            playerPosition.x += playerVelocity * Time.deltaTime;
     }
 
     void ApplyTranslation() 

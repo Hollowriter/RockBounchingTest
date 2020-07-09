@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Basic\AreaConstraints.cs" />
     <Compile Include="Assets\Scripts\Basic\Gravity.cs" />
     <Compile Include="Assets\Scripts\Basic\InputHandler.cs" />
     <Compile Include="Assets\Scripts\Basic\SingletonBase.cs" />
