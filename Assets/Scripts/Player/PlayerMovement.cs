@@ -6,6 +6,7 @@ using UnityEngine.Experimental.PlayerLoop;
 public class PlayerMovement : SingletonBase<PlayerMovement>
 {
     Vector3 playerPosition;
+    public float playerVelocity;
 
     protected override void SingletonAwake()
     {
@@ -23,6 +24,16 @@ public class PlayerMovement : SingletonBase<PlayerMovement>
         playerPosition.y -= Gravity.instance.gravity * Time.deltaTime;
     }
 
+    public void MoveLeft() 
+    {
+        playerPosition.x -= playerVelocity * Time.deltaTime;
+    }
+
+    public void MoveRight() 
+    {
+        playerPosition.x += playerVelocity * Time.deltaTime;
+    }
+
     void ApplyTranslation() 
     {
         this.gameObject.GetComponent<Transform>().position = playerPosition;
@@ -30,7 +41,7 @@ public class PlayerMovement : SingletonBase<PlayerMovement>
 
     protected override void BehaveSingleton()
     {
-        GravityActing();
+        // GravityActing();
         ApplyTranslation();
     }
 
