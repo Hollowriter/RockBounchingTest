@@ -6,10 +6,6 @@ public class AreaConstraints : SingletonBase<AreaConstraints>
 {
     public float LeftStageLimit;
     public float RightStageLimit;
-    protected override void SingletonAwake()
-    {
-        base.SingletonAwake();
-    }
 
     private void Awake()
     {

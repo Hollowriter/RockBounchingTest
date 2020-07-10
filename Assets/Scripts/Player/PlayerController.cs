@@ -14,6 +14,7 @@ public class PlayerController : SingletonBase<PlayerController>
         if (Input.GetKey(InputHandler.instance.walkLeft)) 
         {
             PlayerMovement.instance.MoveLeft();
+            PlayerAnimation.instance.WalkLeft();
         }
     }
 
@@ -22,7 +23,13 @@ public class PlayerController : SingletonBase<PlayerController>
         if (Input.GetKey(InputHandler.instance.walkRight)) 
         {
             PlayerMovement.instance.MoveRight();
+            PlayerAnimation.instance.WalkRight();
         }
+    }
+
+    void NonePressed() 
+    {
+        PlayerAnimation.instance.Idle();
     }
 
     void CheckKeys() 
@@ -31,6 +38,10 @@ public class PlayerController : SingletonBase<PlayerController>
         {
             PressedLeft();
             PressedRight();
+        }
+        else 
+        {
+            NonePressed();
         }
     }
 
