@@ -70,6 +70,8 @@
     <Compile Include="Assets\Scripts\Player\PlayerAnimation.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\RockLauncher\RockCollisions.cs" />
+    <Compile Include="Assets\Scripts\RockLauncher\RockMovement.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/Desktop/RepoRebote/RockBouncingTest/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

@@ -19,11 +19,6 @@ public class PlayerMovement : SingletonBase<PlayerMovement>
         SingletonAwake();
     }
 
-    /*void GravityActing()
-    {
-        playerPosition.y -= Gravity.instance.gravity * Time.deltaTime;
-    }*/
-
     public void MoveLeft() 
     {
         if (playerPosition.x > AreaConstraints.instance.LeftStageLimit)
@@ -43,7 +38,6 @@ public class PlayerMovement : SingletonBase<PlayerMovement>
 
     protected override void BehaveSingleton()
     {
-        // GravityActing();
         ApplyTranslation();
     }
 
