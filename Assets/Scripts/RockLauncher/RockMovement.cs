@@ -8,18 +8,28 @@ public class RockMovement : MonoBehaviour
     Vector3 rockPosition;
     float distanceHorizontal;
     float heightVertical;
+    float MAXHEIGHT;
     float speed;
     float angle;
     float time;
+    float ascendFactor;
 
     void ZeroEverything() 
     {
         distanceHorizontal = 0;
         heightVertical = 0;
-        speed = 0;
+        MAXHEIGHT = 0;
+        speed = 1; // Cambiar solo en testing
         time = 0;
-        angle = 0;
+        angle = Mathf.PI * 45 / 180.0f; // Cambiar solo en testing
         rockPosition = Vector3.zero;
+        ascendFactor = 1;
+    }
+
+    void InitializeMaxHeight() 
+    {
+        MAXHEIGHT = Mathf.Pow(speed, 2) * Mathf.Pow(Mathf.Sin(angle), 2) / 2 * Gravity.instance.gravity;
+        Debug.Log("MaxHeight: " + MAXHEIGHT);
     }
 
     private void Awake()
@@ -30,6 +40,7 @@ public class RockMovement : MonoBehaviour
     private void Start()
     {
         rockPosition = GetComponent<Transform>().position;
+        InitializeMaxHeight();
     }
 
     public void SetSpeed(float _speed) 
@@ -47,9 +58,15 @@ public class RockMovement : MonoBehaviour
         angle = Mathf.PI * degrees / 180.0f;
     }
 
-    public double GetAngle() 
+    public float GetAngle() 
     {
         return angle;
+    }
+
+    public void Bounce() 
+    {
+        ascendFactor *= -1;
+        time = speed;
     }
 
     void MovementTimer() 
@@ -59,7 +76,15 @@ public class RockMovement : MonoBehaviour
 
     void ParableMovementVertical() 
     {
-        heightVertical = rockPosition.y + speed * Mathf.Sin(angle) * time - 0.5f * Gravity.instance.gravity * (time * time);
+        heightVertical = rockPosition.y + speed * Mathf.Sin(angle) * time - 0.5f * (Gravity.instance.gravity * ascendFactor) * (time * time);
+        if (ascendFactor == -1 && rockPosition.y >= MAXHEIGHT) 
+        {
+            ascendFactor *= -1;
+            time = speed;
+            Debug.Log("Max: " + rockPosition.y);
+        }
+        /*Debug.Log("Up: " + rockPosition.y + speed * Mathf.Sin(angle) * time);
+        Debug.Log("Gravity: " + -0.5f * (Gravity.instance.gravity * ascendFactor) * (time * time));*/
     }
 
     void ParableMovementHorizontal() 
