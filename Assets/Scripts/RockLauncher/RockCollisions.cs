@@ -8,7 +8,8 @@ public class RockCollisions : MonoBehaviour
     {
         if (collision.gameObject.tag == "BouncingBox") 
         {
-            this.gameObject.GetComponent<RockMovement>().Bounce();
+            BouncingBoxCollision bounceBox = collision.gameObject.GetComponent<BouncingBoxCollision>();
+            this.gameObject.GetComponent<RockMovement>().Bounce(bounceBox.bounceFactor);
         }
     }
 }

@@ -860,7 +860,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd158a8012ae78c4bb69e3825a15fb92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerVelocity: 3
+  playerVelocity: 5
 --- !u!114 &1152277997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1217,7 +1217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a46aeaa2112234c9736215769472f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounceFactor: 0.5
+  bounceFactor: 1
 --- !u!1 &1502917720
 GameObject:
   m_ObjectHideFlags: 0

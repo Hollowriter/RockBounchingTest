@@ -13,22 +13,24 @@ public class RockMovement : MonoBehaviour
     float angle;
     float time;
     float ascendFactor;
+    float verticalSpeedFactor;
 
     void ZeroEverything() 
     {
         distanceHorizontal = 0;
         heightVertical = 0;
         MAXHEIGHT = 0;
-        speed = 1.5f; // Cambiar solo en testing
+        speed = 2f; // Cambiar solo en testing
         time = 0;
         angle = Mathf.PI * 45 / 180.0f; // Cambiar solo en testing
         rockPosition = Vector3.zero;
         ascendFactor = 1;
+        verticalSpeedFactor = 1;
     }
 
     void UpdateMaxHeight() 
     {
-        MAXHEIGHT = Mathf.Pow(speed, 2) * Mathf.Pow(Mathf.Sin(angle), 2) / 2 * Gravity.instance.gravity;
+        MAXHEIGHT = (Mathf.Pow(speed, 2) * Mathf.Pow(Mathf.Sin(angle), 2) / 2 * Gravity.instance.gravity) * verticalSpeedFactor;
     }
 
     private void Awake()
@@ -62,9 +64,10 @@ public class RockMovement : MonoBehaviour
         return angle;
     }
 
-    public void Bounce() 
+    public void Bounce(float bounceFactor) 
     {
         ascendFactor *= -1;
+        verticalSpeedFactor *= bounceFactor;
     }
 
     void MovementTimer() 
@@ -74,7 +77,7 @@ public class RockMovement : MonoBehaviour
 
     void ParableMovementVertical() 
     {
-        heightVertical = rockPosition.y + speed * Mathf.Sin(angle) * time - 0.5f * (Gravity.instance.gravity * ascendFactor) * (time * time);
+        heightVertical = rockPosition.y + (speed * Mathf.Sin(angle) * verticalSpeedFactor) * time - 0.5f * (Gravity.instance.gravity * ascendFactor) * (time * time);
         if (ascendFactor == -1 && rockPosition.y >= MAXHEIGHT) 
         {
             ascendFactor *= -1;
