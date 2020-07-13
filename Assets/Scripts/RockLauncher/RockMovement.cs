@@ -19,7 +19,7 @@ public class RockMovement : MonoBehaviour
         distanceHorizontal = 0;
         heightVertical = 0;
         MAXHEIGHT = 0;
-        speed = 1; // Cambiar solo en testing
+        speed = 2; // Cambiar solo en testing
         time = 0;
         angle = Mathf.PI * 45 / 180.0f; // Cambiar solo en testing
         rockPosition = Vector3.zero;
@@ -29,7 +29,6 @@ public class RockMovement : MonoBehaviour
     void InitializeMaxHeight() 
     {
         MAXHEIGHT = Mathf.Pow(speed, 2) * Mathf.Pow(Mathf.Sin(angle), 2) / 2 * Gravity.instance.gravity;
-        Debug.Log("MaxHeight: " + MAXHEIGHT);
     }
 
     private void Awake()
@@ -66,7 +65,6 @@ public class RockMovement : MonoBehaviour
     public void Bounce() 
     {
         ascendFactor *= -1;
-        time = speed;
     }
 
     void MovementTimer() 
@@ -81,10 +79,7 @@ public class RockMovement : MonoBehaviour
         {
             ascendFactor *= -1;
             time = speed;
-            Debug.Log("Max: " + rockPosition.y);
         }
-        /*Debug.Log("Up: " + rockPosition.y + speed * Mathf.Sin(angle) * time);
-        Debug.Log("Gravity: " + -0.5f * (Gravity.instance.gravity * ascendFactor) * (time * time));*/
     }
 
     void ParableMovementHorizontal() 
