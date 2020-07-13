@@ -19,14 +19,14 @@ public class RockMovement : MonoBehaviour
         distanceHorizontal = 0;
         heightVertical = 0;
         MAXHEIGHT = 0;
-        speed = 2; // Cambiar solo en testing
+        speed = 1.5f; // Cambiar solo en testing
         time = 0;
         angle = Mathf.PI * 45 / 180.0f; // Cambiar solo en testing
         rockPosition = Vector3.zero;
         ascendFactor = 1;
     }
 
-    void InitializeMaxHeight() 
+    void UpdateMaxHeight() 
     {
         MAXHEIGHT = Mathf.Pow(speed, 2) * Mathf.Pow(Mathf.Sin(angle), 2) / 2 * Gravity.instance.gravity;
     }
@@ -39,7 +39,7 @@ public class RockMovement : MonoBehaviour
     private void Start()
     {
         rockPosition = GetComponent<Transform>().position;
-        InitializeMaxHeight();
+        UpdateMaxHeight();
     }
 
     public void SetSpeed(float _speed) 
@@ -96,6 +96,7 @@ public class RockMovement : MonoBehaviour
 
     void ApplyParableMovement() 
     {
+        UpdateMaxHeight();
         MovementTimer();
         ParableMovementHorizontal();
         ParableMovementVertical();

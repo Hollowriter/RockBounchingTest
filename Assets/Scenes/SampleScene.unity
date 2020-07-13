@@ -555,7 +555,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 946517892}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.01, y: 1.49, z: 0}
+  m_LocalPosition: {x: -8.01, y: 1.52, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -860,7 +860,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd158a8012ae78c4bb69e3825a15fb92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerVelocity: 2
+  playerVelocity: 3
 --- !u!114 &1152277997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1108,6 +1108,7 @@ GameObject:
   - component: {fileID: 1488041044}
   - component: {fileID: 1488041045}
   - component: {fileID: 1488041046}
+  - component: {fileID: 1488041047}
   m_Layer: 0
   m_Name: Box
   m_TagString: BouncingBox
@@ -1124,7 +1125,7 @@ Transform:
   m_GameObject: {fileID: 1488041043}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.021, y: 0.253, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 0.3025, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 1152277993}
   m_RootOrder: 0
@@ -1204,6 +1205,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.56, y: 1.4832816}
   m_EdgeRadius: 0
+--- !u!114 &1488041047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488041043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22a46aeaa2112234c9736215769472f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceFactor: 0.5
 --- !u!1 &1502917720
 GameObject:
   m_ObjectHideFlags: 0

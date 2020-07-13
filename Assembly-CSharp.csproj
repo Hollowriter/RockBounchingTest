@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\Basic\Gravity.cs" />
     <Compile Include="Assets\Scripts\Basic\InputHandler.cs" />
     <Compile Include="Assets\Scripts\Basic\SingletonBase.cs" />
+    <Compile Include="Assets\Scripts\Player\BouncingBoxCollision.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAnimation.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
