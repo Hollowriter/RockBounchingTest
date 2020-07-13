@@ -20,9 +20,9 @@ public class RockMovement : MonoBehaviour
         distanceHorizontal = 0;
         heightVertical = 0;
         MAXHEIGHT = 0;
-        speed = 2f; // Cambiar solo en testing
+        speed = 0;
         time = 0;
-        angle = Mathf.PI * 45 / 180.0f; // Cambiar solo en testing
+        angle = 0;
         rockPosition = Vector3.zero;
         ascendFactor = 1;
         verticalSpeedFactor = 1;
