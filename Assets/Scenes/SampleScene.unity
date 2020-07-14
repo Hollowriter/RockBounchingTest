@@ -773,7 +773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd158a8012ae78c4bb69e3825a15fb92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerVelocity: 5
+  playerVelocity: 7
 --- !u!114 &1152277997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1354,7 +1354,7 @@ MonoBehaviour:
   minAngle: 45
   maxAngle: 60
   minStrength: 1
-  maxStrength: 2
+  maxStrength: 4
   timeForThrow: 2
 --- !u!212 &1570176443
 SpriteRenderer:
@@ -1451,7 +1451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d4b9331e226e674fb55f4f023aec42f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationEndLimit: 0.6
+  animationEndLimit: 0.87
 --- !u!1 &1596220957
 GameObject:
   m_ObjectHideFlags: 0
