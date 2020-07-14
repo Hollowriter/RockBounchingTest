@@ -36,4 +36,17 @@ public class RockPool : SingletonBase<RockPool>
     {
         FillRockPool();
     }
+
+    public GameObject FetchMeARock() 
+    {
+        for (int i = 0; i<poolSize; i++) 
+        {
+            if (!rocks[i].activeInHierarchy) 
+            {
+                rocks[i].SetActive(true);
+                return rocks[i];
+            }
+        }
+        return rocks[poolSize];
+    }
 }
