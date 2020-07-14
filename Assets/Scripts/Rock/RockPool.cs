@@ -47,6 +47,6 @@ public class RockPool : SingletonBase<RockPool>
                 return rocks[i];
             }
         }
-        return rocks[poolSize];
+        return rocks[poolSize - 1];
     }
 }

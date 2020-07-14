@@ -64,6 +64,7 @@ public class RockThrowerBehaviour : MonoBehaviour
         {
             rock.GetComponent<RockMovement>().SetAngle(angle);
             rock.GetComponent<RockMovement>().SetSpeed(strength);
+            this.gameObject.GetComponent<RockThrowerAnimation>().ThrowAnimation();
             rock = null;
         }
     }
