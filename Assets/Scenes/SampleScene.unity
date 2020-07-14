@@ -1349,7 +1349,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ce32c5dcf4190645bf11c3e9e5e5994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeForThrow: 5
+  minAngle: 45
+  maxAngle: 60
+  minStrength: 1
+  maxStrength: 2
+  timeForThrow: 2
 --- !u!212 &1570176443
 SpriteRenderer:
   m_ObjectHideFlags: 0
