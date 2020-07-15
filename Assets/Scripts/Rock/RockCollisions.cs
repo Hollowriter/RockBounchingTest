@@ -10,6 +10,7 @@ public class RockCollisions : MonoBehaviour
         {
             BouncingBoxCollision bounceBox = collision.gameObject.GetComponent<BouncingBoxCollision>();
             this.gameObject.GetComponent<RockMovement>().Bounce(bounceBox.bounceFactor);
+            this.gameObject.GetComponent<RockMoveManager>().CheckAdequateMovement();
         }
     }
 }
