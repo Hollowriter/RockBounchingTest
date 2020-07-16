@@ -46,6 +46,7 @@ public class RockThrowerBehaviour : MonoBehaviour
         {
             rock = RockPool.instance.FetchMeARock();
             rock.transform.position = transform.position;
+            rock.GetComponent<RockMovement>().SetRockPositionToTransform();
         }
     }
 

@@ -7,6 +7,7 @@ TagManager:
   - Floor
   - BouncingBox
   - Rock
+  - Goal
   layers:
   - Default
   - TransparentFX

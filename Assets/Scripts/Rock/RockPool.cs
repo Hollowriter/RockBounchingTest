@@ -44,6 +44,7 @@ public class RockPool : SingletonBase<RockPool>
             if (!rocks[i].activeInHierarchy) 
             {
                 rocks[i].SetActive(true);
+                rocks[i].GetComponent<RockMoveManager>().RestartRock();
                 return rocks[i];
             }
         }

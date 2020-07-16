@@ -15,7 +15,7 @@ public class RockMovement : MonoBehaviour
     float ascendFactor;
     float verticalSpeedFactor;
 
-    void ZeroEverything() 
+    public void ZeroEverything() 
     {
         distanceHorizontal = 0;
         heightVertical = 0;
@@ -38,9 +38,14 @@ public class RockMovement : MonoBehaviour
         ZeroEverything();
     }
 
-    private void Start()
+    public void SetRockPositionToTransform() 
     {
         rockPosition = GetComponent<Transform>().position;
+    }
+
+    private void Start()
+    {
+        SetRockPositionToTransform();
         UpdateMaxHeight();
     }
 

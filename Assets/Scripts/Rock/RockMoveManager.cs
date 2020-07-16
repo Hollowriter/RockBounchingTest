@@ -13,4 +13,11 @@ public class RockMoveManager : MonoBehaviour
             this.gameObject.GetComponent<RockMovement>().enabled = false;
         }
     }
+
+    public void RestartRock() 
+    {
+        this.gameObject.GetComponent<RockMovement>().enabled = true;
+        this.gameObject.GetComponent<RockMovement>().ZeroEverything();
+        this.gameObject.GetComponent<RockToGoal>().enabled = false;
+    }
 }
