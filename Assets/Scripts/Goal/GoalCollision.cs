@@ -14,6 +14,7 @@ public class GoalCollision : SingletonBase<GoalCollision>
         if (collision.gameObject.tag == "Rock") 
         {
             collision.gameObject.SetActive(false);
+            RockCounter.instance.SetRocksInserted(RockCounter.instance.GetRocksInserted() + 1);
         }
     }
 }
