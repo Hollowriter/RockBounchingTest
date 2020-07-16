@@ -11,7 +11,7 @@ public class RockMovement : MonoBehaviour
     float MAXHEIGHT;
     float speed;
     float angle;
-    float time;
+    RockClock clock;
     float ascendFactor;
     float verticalSpeedFactor;
 
@@ -21,7 +21,8 @@ public class RockMovement : MonoBehaviour
         heightVertical = 0;
         MAXHEIGHT = 0;
         speed = 0;
-        time = 0;
+        clock = this.gameObject.GetComponent<RockClock>();
+        clock.SetTime(0);
         angle = 0;
         rockPosition = Vector3.zero;
         ascendFactor = 1;
@@ -75,24 +76,19 @@ public class RockMovement : MonoBehaviour
         verticalSpeedFactor *= bounceFactor;
     }
 
-    void MovementTimer() 
-    {
-        time += Time.deltaTime;
-    }
-
     void ParableMovementVertical() 
     {
-        heightVertical = rockPosition.y + (speed * Mathf.Sin(angle) * verticalSpeedFactor) * time - 0.5f * (Gravity.instance.gravity * ascendFactor) * (time * time);
+        heightVertical = rockPosition.y + (speed * Mathf.Sin(angle) * verticalSpeedFactor) * clock.GetTime() - 0.5f * (Gravity.instance.gravity * ascendFactor) * (clock.GetTime() * clock.GetTime());
         if (ascendFactor == -1 && rockPosition.y >= MAXHEIGHT) 
         {
             ascendFactor *= -1;
-            time = speed;
+            clock.SetTime(speed);
         }
     }
 
     void ParableMovementHorizontal() 
     {
-        distanceHorizontal = speed * Mathf.Cos(angle) * time;
+        distanceHorizontal = speed * Mathf.Cos(angle) * clock.GetTime();
     }
 
     void PassDirectionToTransform() 
@@ -105,7 +101,6 @@ public class RockMovement : MonoBehaviour
     void ApplyParableMovement() 
     {
         UpdateMaxHeight();
-        MovementTimer();
         ParableMovementHorizontal();
         ParableMovementVertical();
         PassDirectionToTransform();

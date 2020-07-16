@@ -9,7 +9,7 @@ public class RockToGoal : MonoBehaviour
     float heightVertical;
     float speedInformed;
     float angleInformed;
-    float timeInformed;
+    RockClock clock;
     float ascendFactor;
 
     void BeforeBeginning() 
@@ -19,7 +19,7 @@ public class RockToGoal : MonoBehaviour
         heightVertical = 0;
         speedInformed = 0;
         angleInformed = 0;
-        timeInformed = 0;
+        clock = this.gameObject.GetComponent<RockClock>();
         ascendFactor = 1;
         this.enabled = false;
     }
@@ -34,7 +34,7 @@ public class RockToGoal : MonoBehaviour
         rockPosition = GetComponent<Transform>().position;
         speedInformed = this.gameObject.GetComponent<RockMovement>().GetSpeed();
         angleInformed = this.gameObject.GetComponent<RockMovement>().GetAngle();
-        timeInformed = this.gameObject.GetComponent<RockMovement>().GetSpeed();
+        clock.SetTime(speedInformed);
     }
 
     void ModifyAscendFactor() 
@@ -47,14 +47,9 @@ public class RockToGoal : MonoBehaviour
         ascendFactor = 1;
     }
 
-    void TimeTick() 
-    {
-        timeInformed += Time.deltaTime;
-    }
-
     void MovementVertical() 
     {
-        heightVertical = rockPosition.y + (speedInformed * Mathf.Sin(angleInformed)) - 0.5f * (Gravity.instance.gravity * ascendFactor) * (timeInformed * timeInformed);
+        heightVertical = rockPosition.y + (speedInformed * Mathf.Sin(angleInformed)) - 0.5f * (Gravity.instance.gravity * ascendFactor) * (clock.GetTime() * clock.GetTime());
     }
 
     void MovementHorizontal() 
@@ -67,7 +62,7 @@ public class RockToGoal : MonoBehaviour
                 rockPosition.x = Goal.instance.GetTransform().position.x;
                 return;
             }
-            distanceHorizontal = speedInformed * Mathf.Cos(angleInformed) * timeInformed;
+            distanceHorizontal = speedInformed * Mathf.Cos(angleInformed) * clock.GetTime();
         }
     }
 
@@ -80,7 +75,6 @@ public class RockToGoal : MonoBehaviour
 
     void Behave() 
     {
-        TimeTick();
         ModifyAscendFactor();
         MovementVertical();
         MovementHorizontal();
