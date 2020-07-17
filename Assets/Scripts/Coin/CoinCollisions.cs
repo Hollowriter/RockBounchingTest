@@ -11,6 +11,7 @@ public class CoinCollisions : MonoBehaviour
             if (this.gameObject.activeInHierarchy)
             {
                 CoinCounter.instance.SetCoinsCollected(CoinCounter.instance.GetCoinsCollected() + 1);
+                this.gameObject.transform.position = Vector3.zero;
                 this.gameObject.SetActive(false);
             }
         }
