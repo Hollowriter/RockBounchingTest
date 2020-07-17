@@ -8,6 +8,7 @@ TagManager:
   - BouncingBox
   - Rock
   - Goal
+  - Coin
   layers:
   - Default
   - TransparentFX
