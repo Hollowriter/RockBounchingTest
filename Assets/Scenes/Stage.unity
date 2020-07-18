@@ -2882,7 +2882,7 @@ MonoBehaviour:
   maxAngle: 80
   minStrength: 8
   maxStrength: 12
-  timeForThrow: 4
+  timeForThrow: 3
 --- !u!212 &1570176443
 SpriteRenderer:
   m_ObjectHideFlags: 0
