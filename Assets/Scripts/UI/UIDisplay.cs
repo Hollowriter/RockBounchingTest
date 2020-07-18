@@ -9,12 +9,15 @@ public class UIDisplay : SingletonBase<UIDisplay>
     Text rockText;
     [SerializeField]
     Text coinText;
+    [SerializeField]
+    Text timeText;
 
     protected override void SingletonAwake()
     {
         base.SingletonAwake();
         rockText.text = "x" + 0;
         coinText.text = "x" + 0;
+        timeText.text = "0";
     }
 
     private void Awake()
@@ -26,6 +29,7 @@ public class UIDisplay : SingletonBase<UIDisplay>
     {
         rockText.text = "x" + RockCounter.instance.GetRocksInserted();
         coinText.text = "x" + CoinCounter.instance.GetCoinsCollected();
+        timeText.text = TimeLimit.instance.GetSecondsLeft().ToString(); ;
     }
 
     protected override void BehaveSingleton()
