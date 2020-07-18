@@ -31,7 +31,7 @@ public class RockMovement : MonoBehaviour
 
     void UpdateMaxHeight() 
     {
-        MAXHEIGHT = (Mathf.Pow(speed, 2) * Mathf.Pow(Mathf.Sin(angle), 2) / 2 * Gravity.instance.gravity) * verticalSpeedFactor;
+        MAXHEIGHT = (Mathf.Pow(speed, 2) * Mathf.Pow(Mathf.Sin(angle), 2) / (2 * Gravity.instance.gravity)) * verticalSpeedFactor;
     }
 
     private void Awake()
@@ -78,23 +78,22 @@ public class RockMovement : MonoBehaviour
 
     void ParableMovementVertical() 
     {
-        heightVertical = rockPosition.y + (speed * Mathf.Sin(angle) * verticalSpeedFactor) * clock.GetTime() - 0.5f * (Gravity.instance.gravity * ascendFactor) * (clock.GetTime() * clock.GetTime());
-        if (ascendFactor == -1 && rockPosition.y >= MAXHEIGHT) 
+        heightVertical = rockPosition.y + (speed * Mathf.Sin(angle) * verticalSpeedFactor) - 0.5f * Gravity.instance.gravity;
+        if (rockPosition.y >= MAXHEIGHT) 
         {
             ascendFactor *= -1;
-            clock.SetTime(speed);
         }
     }
 
     void ParableMovementHorizontal() 
     {
-        distanceHorizontal = speed * Mathf.Cos(angle) * clock.GetTime();
+        distanceHorizontal = speed * Mathf.Cos(angle);
     }
 
     void PassDirectionToTransform() 
     {
         rockPosition.x += distanceHorizontal * Time.deltaTime;
-        rockPosition.y += heightVertical * Time.deltaTime;
+        rockPosition.y += heightVertical * ascendFactor * Time.deltaTime;
         GetComponent<Transform>().position = rockPosition;
     }
 

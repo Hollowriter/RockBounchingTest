@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class RockGoalDistanceDeterminer : MonoBehaviour
 {
-    public float horizontalLimitDistance;
+    float horizontalLimitDistance;
     float distanceGoalRock;
 
     private void Awake()
     {
         distanceGoalRock = 0;
+    }
+
+    private void Start()
+    {
+        horizontalLimitDistance = this.gameObject.GetComponent<RockMovement>().GetSpeed();
     }
 
     void CalculateDistanceToGoal() 

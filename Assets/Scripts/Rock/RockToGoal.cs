@@ -32,24 +32,24 @@ public class RockToGoal : MonoBehaviour
     public void BackEnabled() 
     {
         rockPosition = GetComponent<Transform>().position;
-        speedInformed = this.gameObject.GetComponent<RockMovement>().GetSpeed();
+        speedInformed = this.gameObject.GetComponent<RockMovement>().GetSpeed() * 2;
         angleInformed = this.gameObject.GetComponent<RockMovement>().GetAngle();
         clock.SetTime(speedInformed);
     }
 
     void ModifyAscendFactor() 
     {
-        if (rockPosition.x != Goal.instance.GetTransform().position.x) 
+        if (rockPosition.x != Goal.instance.GetTransform().position.x || rockPosition.y < Goal.instance.GetTransform().position.y) 
         {
-            ascendFactor = -1;
+            ascendFactor = 1;
             return;
         }
-        ascendFactor = 1;
+        ascendFactor = -1;
     }
 
     void MovementVertical() 
     {
-        heightVertical = rockPosition.y + (speedInformed * Mathf.Sin(angleInformed)) - 0.5f * (Gravity.instance.gravity * ascendFactor) * (clock.GetTime() * clock.GetTime());
+        heightVertical = rockPosition.y + (speedInformed * Mathf.Sin(angleInformed)) - 0.5f * Gravity.instance.gravity;
     }
 
     void MovementHorizontal() 
@@ -62,14 +62,14 @@ public class RockToGoal : MonoBehaviour
                 rockPosition.x = Goal.instance.GetTransform().position.x;
                 return;
             }
-            distanceHorizontal = speedInformed * Mathf.Cos(angleInformed) * clock.GetTime();
+            distanceHorizontal = speedInformed * Mathf.Cos(angleInformed);
         }
     }
 
     void PassDirectionToTransform()
     {
         rockPosition.x += distanceHorizontal * Time.deltaTime;
-        rockPosition.y += heightVertical * Time.deltaTime;
+        rockPosition.y += heightVertical * ascendFactor * Time.deltaTime;
         GetComponent<Transform>().position = rockPosition;
     }
 
