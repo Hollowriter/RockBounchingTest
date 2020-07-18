@@ -9,7 +9,6 @@ public class RockToGoal : MonoBehaviour
     float heightVertical;
     float speedInformed;
     float angleInformed;
-    RockClock clock;
     float ascendFactor;
 
     void BeforeBeginning() 
@@ -19,7 +18,6 @@ public class RockToGoal : MonoBehaviour
         heightVertical = 0;
         speedInformed = 0;
         angleInformed = 0;
-        clock = this.gameObject.GetComponent<RockClock>();
         ascendFactor = 1;
         this.enabled = false;
     }
@@ -34,7 +32,6 @@ public class RockToGoal : MonoBehaviour
         rockPosition = GetComponent<Transform>().position;
         speedInformed = this.gameObject.GetComponent<RockMovement>().GetSpeed() * 2;
         angleInformed = this.gameObject.GetComponent<RockMovement>().GetAngle();
-        clock.SetTime(speedInformed);
     }
 
     void ModifyAscendFactor() 

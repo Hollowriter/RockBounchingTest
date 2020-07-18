@@ -11,7 +11,6 @@ public class RockMovement : MonoBehaviour
     float MAXHEIGHT;
     float speed;
     float angle;
-    RockClock clock;
     float ascendFactor;
     float verticalSpeedFactor;
 
@@ -21,8 +20,6 @@ public class RockMovement : MonoBehaviour
         heightVertical = 0;
         MAXHEIGHT = 0;
         speed = 0;
-        clock = this.gameObject.GetComponent<RockClock>();
-        clock.SetTime(0);
         angle = 0;
         rockPosition = Vector3.zero;
         ascendFactor = 1;
@@ -78,7 +75,7 @@ public class RockMovement : MonoBehaviour
 
     void ParableMovementVertical() 
     {
-        heightVertical = rockPosition.y + (speed * Mathf.Sin(angle) * verticalSpeedFactor) - 0.5f * Gravity.instance.gravity;
+        heightVertical = (MAXHEIGHT - rockPosition.y) + (speed * Mathf.Sin(angle) * verticalSpeedFactor) - 0.5f * Gravity.instance.gravity;
         if (rockPosition.y >= MAXHEIGHT) 
         {
             ascendFactor *= -1;
