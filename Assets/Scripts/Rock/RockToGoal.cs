@@ -9,6 +9,7 @@ public class RockToGoal : MonoBehaviour
     float heightVertical;
     float speedInformed;
     float angleInformed;
+    float MAXHEIGHTINFORMED;
     float ascendFactor;
 
     void BeforeBeginning() 
@@ -30,8 +31,9 @@ public class RockToGoal : MonoBehaviour
     public void BackEnabled() 
     {
         rockPosition = GetComponent<Transform>().position;
-        speedInformed = this.gameObject.GetComponent<RockMovement>().GetSpeed() * 2;
+        speedInformed = this.gameObject.GetComponent<RockMovement>().GetSpeed();
         angleInformed = this.gameObject.GetComponent<RockMovement>().GetAngle();
+        MAXHEIGHTINFORMED = (Mathf.Pow(speedInformed, 2) * Mathf.Pow(Mathf.Sin(angleInformed), 2) / (2 * Gravity.instance.gravity));
     }
 
     void ModifyAscendFactor() 
@@ -59,7 +61,7 @@ public class RockToGoal : MonoBehaviour
                 rockPosition.x = Goal.instance.GetTransform().position.x;
                 return;
             }
-            distanceHorizontal = speedInformed * Mathf.Cos(angleInformed);
+            distanceHorizontal = speedInformed * 2 * Mathf.Cos(angleInformed);
         }
     }
 
